@@ -4,28 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-md-6 col-12">
-          <div class="header-top-left">
-            <div class="language-currency lang-curr-border-2">
-              <span>{{idioma.moneda}}:</span>
-              <div class="lang-curr-dropdown">
-                <ul>
-                  <li><a class="language-click" href="#">USD <i class="ion-chevron-down"></i></a>
-                    <ul class="language-dropdown">
-                      <li><a href="#">USD </a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="language-currency lang-curr-mrg lang-curr-border-2">
-              <span>{{idioma.textoIdioma}}:</span>
-              <div class="lang-curr-dropdown">
-                <ul>
-                  <language (change)="cambiarIdioma($event)"></language>
-                </ul>
-              </div>
-            </div>
-          </div>
+         
         </div>
         <div class="col-lg-6 col-md-6 col-12">
           <div class="header-top-right">
@@ -66,7 +45,7 @@
         </div>
         <div class="col-lg-9 col-md-12 col-12">
           <div class="header-contact-search-wrapper f-right">
-            <div class="header-contact middle-same">
+            <div class="header-contact middle-same celular">
               <div class="header-contact-icon">
                 <i class="pe-7s-headphones"></i>
               </div>
@@ -135,7 +114,7 @@
         <div class="col-12">
           <div class="logo mobile-logo">
             <a href="/">
-              <img [src]="urls.conexionImagenes + '/' + dtsEmpresa.logo" alt="" style="width: 50%;">
+              <img [src]="urls.conexionImagenes + '/' + dtsEmpresa.logo" alt="" style="width: 60%;">
             </a>
           </div>
         </div>

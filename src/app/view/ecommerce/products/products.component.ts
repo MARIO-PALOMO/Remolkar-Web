@@ -260,7 +260,7 @@ export class ProductsComponent implements OnInit {
   }
 
   public agregarItemCarrito(item) {
-    this.cart.agregarItemCarrito(item.idProducto, item, 4);
+    this.cart.agregarItemCarrito(item.idProducto, item, 1);
     this.itemsCarrito = {
       total: this.cart.obtenerTotal(),
       envio: 0,

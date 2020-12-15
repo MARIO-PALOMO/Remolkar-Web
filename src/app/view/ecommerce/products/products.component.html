@@ -13,10 +13,6 @@
   <div class="container">
     <div class="row flex-row-reverse">
       <div class="col-lg-9">
-        <div class="banner-area pb-30">
-          <a name="Ancla"></a>
-          <a href="#"><img alt="" src="assets/img/banner/banner-49.jpg"></a>
-        </div>
         <div class="shop-topbar-wrapper">
           <div class="shop-topbar-left">
             <div class="grid-list-options nav view-mode">
@@ -33,10 +29,10 @@
               <div class="pagination-style">
                 <ul>
                   <li (click)="atras()">
-                    <a class="prev-next prev"><i class="ion-ios-arrow-left"></i></a>
+                    <a class="prev-next prev"><i class="ion-ios-arrow-left"></i> Atrás</a>
                   </li>
                   <li (click)="siguiente()">
-                    <a class="prev-next next"><i class="ion-ios-arrow-right"></i>
+                    <a class="prev-next next">Siguiente<i class="ion-ios-arrow-right"></i>
                     </a>
                   </li>
                 </ul>
@@ -60,7 +56,7 @@
                         style="width: 100% !important; border: 1px solid #E8E8E8"
                         onerror="this.onerror == null; this.src = 'https://www.remolkar.com/imagenes/productos/predeterminado.png'">
                     </a>
-                    <span *ngIf="producto.promocion == 1">-{{ generico.formatearNumero(producto.descuento,0)}}%</span>
+                    <span *ngIf="producto.promocion == 1" style="background-color: #ebe842 !important; color: #000000;">-{{ generico.formatearNumero(producto.descuento,0)}}%</span>
                   </div>
                   <div class="list-col">
                     <div class="gridview">
@@ -88,9 +84,7 @@
                           <i class="ion-android-star-outline theme-star"></i>
                           <i class="ion-android-star-outline theme-star"></i>
                         </div>
-                        <p>
-                          {{producto.descripcionCorta}}
-                        </p>
+                        
                         <div class="product-action">
                           <a class="same-action" title="Wishlist" style="cursor: pointer;"
                             (click)="favorito.agregarItemFavorito(producto.idProducto, producto)">
@@ -139,9 +133,7 @@
                       <span>$ {{generico.formatearNumero(producto.precio,2)}}</span>
                     </div>
 
-                    <p>
-                      {{producto.descripcionCorta}}
-                    </p>
+                    
                     <div class="product-action">
                       <a class="action-cart" style="cursor: pointer;" (click)="agregarItemCarrito(producto)"> Añadir al
                         Carrito </a>
@@ -159,8 +151,8 @@
           <div *ngIf="lstProductos.length != 0" class="pagination-total-pages">
             <div class="pagination-style">
               <ul>
-                <li (click)="atras()"><a class="prev-next prev" href="productos#Ancla"><i class="ion-ios-arrow-left"></i> Atrás</a></li>
-                <li (click)="siguiente()"><a class="prev-next next" href="productos#Ancla">Siguiente<i class="ion-ios-arrow-right"></i> </a>
+                <li (click)="atras()"><a class="prev-next prev" ><i class="ion-ios-arrow-left"></i> Atrás</a></li>
+                <li (click)="siguiente()"><a class="prev-next next">Siguiente<i class="ion-ios-arrow-right"></i> </a>
                 </li>
               </ul>
             </div>
@@ -171,7 +163,7 @@
         </div>
       </div>
       <div class="col-lg-3">
-        <div class="shop-sidebar-wrapper gray-bg-7 mrg-top-md mrg-top-sm">
+        <div class="shop-sidebar-wrapper gray-bg-7 mrg-top-md mrg-top-sm" style="background-color: #E8E8E8">
           <div class="shop-widget single-product-red">
             <h4 class="shop-sidebar-title">Categorias</h4>
             <div class="shop-catigory">
@@ -184,7 +176,7 @@
                       href="#shop-catigory-1" class="click">
                       {{categoria.nombre}} | RIN <i class="ion-ios-arrow-down"></i>
                     </a>
-                    <ul *ngIf="categoria.nombre == 'Llantas'" id="shop-catigory-1" class="panel-collapse collapse show">
+                    <ul *ngIf="categoria.nombre == 'Llantas'" id="shop-catigory-1" class="panel-collapse collapse">
                       <li *ngFor="let rin of lstRin" class="click" (click)="filtrar(2, rin)"><a>RIN {{ rin }}</a></li>
                     </ul>
 
@@ -234,7 +226,7 @@
                 <li><a href="#">Llantas</a></li>
                 <li><a href="#">Audio</a></li>
                 <li><a href="#">Accesorios</a></li>
-                <li><a href="#">Macánica</a></li>
+                <li><a href="#">Asistencia Vial</a></li>
                 <li><a href="#">Lubricantes</a></li>
                 <li><a href="#">Remolkar</a></li>
               </ul>

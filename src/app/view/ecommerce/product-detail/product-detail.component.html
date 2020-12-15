@@ -41,18 +41,7 @@
         <div class="product-details-content devita-product-red">
           <h4>{{producto.nombre}}</h4>
           <div class="rating-review">
-            <div class="pro-dec-rating">
-              <i class="ion-android-star-outline theme-star text-red"></i>
-              <i class="ion-android-star-outline theme-star text-red"></i>
-              <i class="ion-android-star-outline theme-star text-red"></i>
-              <i class="ion-android-star-outline theme-star text-red"></i>
-              <i class="ion-android-star-outline theme-star text-red"></i>
-            </div>
-            <div class="pro-dec-review">
-              <ul>
-                <li class="text-red">0 Comentarios </li>
-              </ul>
-            </div>
+            <b>SKU:</b>&nbsp; {{ producto.codigo }}
           </div>
           <div *ngIf="producto.promocion == 1" style="font-size: 24px !important;">
             <span class="text-red">$ {{ generico.formatearNumero(producto.precioDescuento,2) }}</span>&nbsp;
@@ -66,18 +55,17 @@
           <div class="in-stock">
             <p>Disponibilidad: <span class="text-red">En Stock: {{ producto.stock }}</span></p>
           </div>
-          <p>
-            {{ producto.descripcion }}
-          </p>
+          <div [innerHTML]="producto.descripcion">
+          </div>
           <br>
           <div class="quality-add-to-cart">
             <div class="quality">
               <label>Cant:</label>
-              <input class="cart-plus-minus-box" type="number" name="qtybutton" value="4" max="{{ producto.stock }}"
+              <input class="cart-plus-minus-box" type="number" name="qtybutton" value="1" min="1" max="{{ producto.stock }}"
                 [(ngModel)]="cantidad">
             </div>
             <div class="product-action">
-              <a class="action-cart" style="cursor: pointer;" (click)="agregarItemCarrito(producto)"> Añadir al Carrito
+              <a class="action-cart" style="cursor: pointer;" (click)="agregarItemCarrito(producto, 1)"> Añadir al Carrito
               </a>
               <a class="same-action" title="Wishlist" style="cursor: pointer;" (click)="favorito.agregarItemFavorito(producto.idProducto, producto)">
                 <i class="fa fa-heart-o"></i>
@@ -238,14 +226,12 @@
                   <i class="ion-android-star-outline theme-star"></i>
                   <i class="ion-android-star-outline theme-star"></i>
                 </div>
-                <p>
-                  {{descuento.descripcionCorta}}
-                </p>
+                
                 <div class="product-action">
                   <a class="same-action" title="Wishlist" href="#">
                     <i class="fa fa-heart-o"></i>
                   </a>
-                  <a class="action-cart" style="cursor: pointer;" (click)="agregarItemCarrito(descuento)">
+                  <a class="action-cart" style="cursor: pointer;" (click)="agregarItemCarrito(descuento, 2)">
                     Añadir al Carrito
                   </a>
                 </div>

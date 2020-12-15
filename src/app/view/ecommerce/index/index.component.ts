@@ -115,10 +115,10 @@ export class IndexComponent implements OnInit {
 
     this.conexion.get("listarDetallesLlanta", "").subscribe(
       (res: any) => {
-        console.log(res.resultado.ancho)
-        this.lstLlantas.rin = JSON.parse(res.resultado.rin);
-        this.lstLlantas.ancho = JSON.parse(res.resultado.ancho);
-        this.lstLlantas.perfil = JSON.parse(res.resultado.perfil);
+        
+        this.lstLlantas.rin = this.ordenar(JSON.parse(res.resultado.rin));
+        this.lstLlantas.ancho = this.ordenar(JSON.parse(res.resultado.ancho));
+        this.lstLlantas.perfil = this.ordenar(JSON.parse(res.resultado.perfil));
        
       },
       err => {
@@ -126,6 +126,31 @@ export class IndexComponent implements OnInit {
       }
     );
   }
+
+  public ordenar(lista) {
+
+    var tipo_all = lista;
+  
+    var tipo_number = [];
+    var tipo_string = [];
+  
+    for (let i = 0; i < tipo_all.length; i++) {
+      if (this.isNumeric(tipo_all[i])) {
+        tipo_number.push(parseFloat(tipo_all[i]));
+      } else {
+        tipo_string.push(tipo_all[i]);
+      }
+    }
+  
+    const total_array = tipo_number.sort((a, b) => a - b).concat(tipo_string.sort((a, b) => a - b));
+  
+    return total_array;
+  }
+  
+  public isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+  }
+  
 
   public listarMarcasVehiculos() {
    
@@ -230,13 +255,17 @@ export class IndexComponent implements OnInit {
     }
   }
   public agregarItemCarrito(item) {
-    this.cart.agregarItemCarrito(item.idProducto, item, 4);
+    this.cart.agregarItemCarrito(item.idProducto, item, 1);
     this.itemsCarrito = {
       total: this.cart.obtenerTotal(),
       envio: 0,
       numero: this.cart.obtenerNumeroProductos(),
       lstCarrito: this.cart.verCarrito()
     };
+  }
+
+  public abrirModal(){
+    $('#exampleModalCenter').modal('toggle');
   }
 
   public transform(url) {

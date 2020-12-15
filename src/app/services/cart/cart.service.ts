@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -6,9 +7,10 @@ import { Injectable } from '@angular/core';
 export class CartService {
   private keyCliente: string = "l:cart";
 
-  constructor() { }
+  constructor(private toastr: ToastrService) { }
 
   public eliminarCarrito() {
+    this.toastr.warning('Carrito Eliminado', 'Carrito');
     localStorage.removeItem(this.keyCliente);
   }
 
@@ -29,6 +31,7 @@ export class CartService {
       }
     }
     eliminarItemVector(articulos);
+    this.toastr.warning('Producto eliminado del carrito', 'Carrito');
     localStorage.setItem(this.keyCliente, JSON.stringify(articulos));
     return this.verCarrito();
   }
@@ -52,8 +55,8 @@ export class CartService {
     if (!flag) {
       articulos.push({ data: detalle, cantidad: cantidad });
     }
+    this.toastr.success('Producto agregado al carrito', 'Carrito');
     localStorage.setItem(this.keyCliente, JSON.stringify(articulos));
-
   }
 
   public obtenerNumeroProductos() {
@@ -67,10 +70,10 @@ export class CartService {
   }
 
 
-  public obtenerTotal(){
+  public obtenerTotal() {
     var articulos: any = localStorage.getItem(this.keyCliente) == null ? [] : JSON.parse(localStorage.getItem(this.keyCliente));
     var total = 0;
-    for(let carrito of articulos){
+    for (let carrito of articulos) {
       total += this.obtenerTotalItem(carrito.cantidad, carrito.data);
     }
     return total;

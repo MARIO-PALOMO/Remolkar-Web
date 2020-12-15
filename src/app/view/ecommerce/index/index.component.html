@@ -8,17 +8,13 @@
           <div class="col-lg-7">
             <div class="slider-content-5 slider-animated-1">
               <div [innerHTML]="carrusel.primero.descripcion"></div>
+              <div style="color: #ffffff; padding-top: 10px !important;">
+                Para saber el ANCHO, PERFIL y RIN de tu vehículo 
+                <a style="color: #ffffff; cursor: pointer;" (click)="abrirModal()"><u>ingresa aquí.</u>
+                </a>
+              </div>
               <br>
               <div class="row">
-                <div class="col-md-3">
-
-                  <select class="btn-filter" [(ngModel)]="filtroLlantas.rin">
-                    <option value="0">RIN</option>
-                    <option *ngFor="let rin of lstLlantas.rin" value="{{rin}}" style="color: #000000 !important;">RIN:
-                      {{rin}}</option>
-                  </select>
-                  <br><br>
-                </div>
                 <div class="col-md-3">
 
                   <select class="btn-filter" [(ngModel)]="filtroLlantas.ancho">
@@ -28,6 +24,7 @@
                   </select>
                   <br><br>
                 </div>
+
                 <div class="col-md-3">
                   <select class="btn-filter" [(ngModel)]="filtroLlantas.perfil">
                     <option value="0">PERFIL</option>
@@ -36,6 +33,17 @@
                   </select>
                   <br><br>
                 </div>
+
+                <div class="col-md-3">
+
+                  <select class="btn-filter" [(ngModel)]="filtroLlantas.rin">
+                    <option value="0">RIN</option>
+                    <option *ngFor="let rin of lstLlantas.rin" value="{{rin}}" style="color: #000000 !important;">RIN:
+                      {{rin}}</option>
+                  </select>
+                  <br><br>
+                </div>
+
                 <div class="col-md-3"></div>
               </div>
 
@@ -58,30 +66,21 @@
               <div [innerHTML]="carrusel.segundo.descripcion"></div>
               <br>
               <div class="row">
-                <div class="col-md-3">
-                  <select class="btn-filter" [(ngModel)]="filtroLlantasVehiculo.marca"
-                    (ngModelChange)="listarModelosVehiculos()">
-                    <option value="0">MARCA</option>
-                    <option style="color: #000000 !important;" *ngFor="let marca of lstMarcas"
-                      value="{{marca.idMarcaAuto}}">
-                      {{marca.nombre}}</option>
-                  </select>
+                <div class="col-md-6">
+                  <a class="btn-filter" style="text-align: center !important;" href="https://llantasneumaticos.com"
+                    target="_blank">Ver Marcas - Modelos</a>
                   <br><br>
                 </div>
-                <div class="col-md-3">
-                  <select class="btn-filter" [(ngModel)]="filtroLlantasVehiculo.vehiculo">
-                    <option value="0">MODELO</option>
-                    <option style="color: #000000 !important;" *ngFor="let modelo of lstModelos" value="{{modelo.tag}}">
-                      {{modelo.nombre}}</option>
-                  </select>
-                  <br><br>
+
+                <div class="col-md-6">
+                  <!--<a class="btn-filter" style="text-align: center !important; color: #ffffff !important;"
+                    data-toggle="modal" data-target="#exampleModalCenter">Tutorial</a>
+                  <br><br>-->
                 </div>
-                <div class="col-md-6"></div>
               </div>
 
               <div class="deals-btn mt-75">
-                <a class="animated btn-style-2 text-white" (click)="filtrarLlantasVehiculo()"><i
-                    class="fa fa-search"></i>&nbsp; Buscar</a>
+                <br><br>
               </div>
             </div>
           </div>
@@ -172,9 +171,7 @@
                       <i class="ion-android-star-outline theme-star"></i>
                       <i class="ion-android-star-outline theme-star"></i>
                     </div>
-                    <p>
-                      {{descuento.descripcionCorta}}
-                    </p>
+
                     <div class="product-action">
                       <a class="same-action" title="Wishlist" style="cursor: pointer;"
                         (click)="favorito.agregarItemFavorito(descuento.idProducto, descuento)">
@@ -195,6 +192,7 @@
     </div>
   </div>
 </div>
+<br>
 <div *ngIf="productoPromocion.estado == 1" class="deals-area pt-65 pb-65 border-top-2"
   style='background-image: url("https://www.remolkar.com/imagenes/productos/slider1.jpg"); width: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;'>
   <div class="container">
@@ -214,10 +212,9 @@
           <div style="color: #ffffff;">
             <h4 style="color: #ffffff;">{{productoPromocion.datos.nombre}}</h4>
             <br>
-            <b>CARACTERÍSTICAS DEL PRODUCTO</b>
+
             <br><br>
             <div>
-              {{productoPromocion.datos.descripcionCorta}}
               <br><br>
               <h3 style="color: #ffffff;">$ {{generico.formatearNumero(productoPromocion.datos.precioDescuento,2)}}</h3>
               <div style="padding-top: 3px;">
@@ -354,4 +351,30 @@
     </div>
   </div>
 </div>
+
 <app-footer></app-footer>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Video Tutorial</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <video [src]="urls.conexionVideos + '/VideoTutorial.MP4'" width="100%" height=300 controls>
+          Lo sentimos. Este vídeo no puede ser reproducido en tu navegador.<br>
+          La versión descargable está disponible en <a href="URL">Enlace</a>.
+        </video>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-filter" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>

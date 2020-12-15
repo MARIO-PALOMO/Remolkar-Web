@@ -20,7 +20,7 @@ export class ProductDetailComponent implements OnInit {
   imagenes = [];
   imagenSeleccionada = "";
   tags = [];
-  cantidad = 4;
+  cantidad = 1;
   lstProductosRelacionados = [];
   itemsCarrito: any = {
     total: 0,
@@ -67,8 +67,8 @@ export class ProductDetailComponent implements OnInit {
   }
 
 
-  public agregarItemCarrito(item) {
-    this.cart.agregarItemCarrito(item.idProducto, item, this.cantidad);
+  public agregarItemCarrito(item, tipo) {
+    this.cart.agregarItemCarrito(item.idProducto, item, (tipo == 1 ? this.cantidad : 1) );
     this.itemsCarrito = {
       total: this.cart.obtenerTotal(),
       envio: 0,
